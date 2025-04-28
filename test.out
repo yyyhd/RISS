@@ -1,0 +1,955 @@
+------------ Options -------------
+aspect_ratio: 1.0
+batchSize: 1
+checkpoints_dir: /home/hoo/projects/wxd/GANs/ResViT-main/Checkpoints
+dataroot: /home/hoo/projects/wxd/GANs/ResViT-main/dataset
+dataset_mode: aligned
+display_id: 1
+display_port: 8097
+display_server: http://localhost
+display_winsize: 256
+fineSize: 256
+gpu_ids: [0]
+how_many: 10000
+init_type: normal
+input_nc: 3
+isTrain: False
+loadSize: 256
+max_dataset_size: inf
+model: resvit_one
+nThreads: 2
+n_layers_D: 3
+name: le_re
+ndf: 64
+ngf: 64
+no_dropout: False
+no_flip: False
+norm: batch
+ntest: inf
+output_nc: 1
+phase: test
+pre_trained_path: ./checkpoints/T1_T2_PD_IXI/latest_net_G.pth
+pre_trained_resnet: 0
+pre_trained_transformer: 1
+resize_or_crop: resize_and_crop
+results_dir: /home/hoo/projects/wxd/GANs/ResViT-main/dataset/result
+serial_batches: True
+vit_name: Res-ViT-B_16
+which_direction: AtoB
+which_epoch: latest
+which_model_netD: basic
+which_model_netG: resvit
+-------------- End ----------------
+CustomDatasetDataLoader
+resvit_one
+Res-ViT-B_16
+./model/vit_checkpoint/imagenet21k/R50+ViT-B_16.npz
+load_pretrained: grid-size from 14 to 16
+load_pretrained: grid-size from 14 to 16
+---------- Networks initialized -------------
+ResViT(
+  (transformer_encoder): Encoder(
+    (layer): ModuleList(
+      (0): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (1): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (2): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (3): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (4): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (5): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (6): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (7): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (8): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (9): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (10): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+      (11): Block(
+        (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+        (ffn): Mlp(
+          (fc1): Linear(in_features=768, out_features=3072, bias=True)
+          (fc2): Linear(in_features=3072, out_features=768, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (attn): Attention(
+          (query): Linear(in_features=768, out_features=768, bias=True)
+          (key): Linear(in_features=768, out_features=768, bias=True)
+          (value): Linear(in_features=768, out_features=768, bias=True)
+          (out): Linear(in_features=768, out_features=768, bias=True)
+          (attn_dropout): Dropout(p=0.0, inplace=False)
+          (proj_dropout): Dropout(p=0.0, inplace=False)
+          (softmax): Softmax(dim=-1)
+        )
+      )
+    )
+    (encoder_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  )
+  (encoder_1): Sequential(
+    (0): ReflectionPad2d((3, 3, 3, 3))
+    (1): Conv2d(3, 64, kernel_size=(7, 7), stride=(1, 1), bias=False)
+    (2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): ReLU(inplace=True)
+  )
+  (encoder_2): Sequential(
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (encoder_3): Sequential(
+    (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (art_1): ART_block(
+    (transformer): Encoder(
+      (layer): ModuleList(
+        (0): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (1): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (2): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (3): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (4): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (5): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (6): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (7): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (8): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (9): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (10): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (11): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+      )
+      (encoder_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+    )
+    (downsample): Sequential(
+      (0): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(512, 1024, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (4): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+    (embeddings): Embeddings(
+      (patch_embeddings): Conv2d(1024, 768, kernel_size=(1, 1), stride=(1, 1))
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (upsample): Sequential(
+      (0): ConvTranspose2d(768, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+      (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+    (cc): channel_compression(
+      (skip): Sequential(
+        (0): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (block): Sequential(
+        (0): Conv2d(512, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_2): ART_block(
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_3): ART_block(
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_4): ART_block(
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_5): ART_block(
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_6): ART_block(
+    (transformer): Encoder(
+      (layer): ModuleList(
+        (0): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (1): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (2): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (3): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (4): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (5): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (6): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (7): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (8): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (9): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (10): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+        (11): Block(
+          (attention_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+          (ffn): Mlp(
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (attn): Attention(
+            (query): Linear(in_features=768, out_features=768, bias=True)
+            (key): Linear(in_features=768, out_features=768, bias=True)
+            (value): Linear(in_features=768, out_features=768, bias=True)
+            (out): Linear(in_features=768, out_features=768, bias=True)
+            (attn_dropout): Dropout(p=0.0, inplace=False)
+            (proj_dropout): Dropout(p=0.0, inplace=False)
+            (softmax): Softmax(dim=-1)
+          )
+        )
+      )
+      (encoder_norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+    )
+    (downsample): Sequential(
+      (0): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(512, 1024, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (4): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+    (embeddings): Embeddings(
+      (patch_embeddings): Conv2d(1024, 768, kernel_size=(1, 1), stride=(1, 1))
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (upsample): Sequential(
+      (0): ConvTranspose2d(768, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): ConvTranspose2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+      (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+    )
+    (cc): channel_compression(
+      (skip): Sequential(
+        (0): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (block): Sequential(
+        (0): Conv2d(512, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_7): ART_block(
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_8): ART_block(
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (art_9): ART_block(
+    (residual_cnn): Sequential(
+      (0): ResnetBlock(
+        (conv_block): Sequential(
+          (0): ReflectionPad2d((1, 1, 1, 1))
+          (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (3): ReLU(inplace=True)
+          (4): ReflectionPad2d((1, 1, 1, 1))
+          (5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+    )
+  )
+  (decoder_1): Sequential(
+    (0): ConvTranspose2d(256, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (decoder_2): Sequential(
+    (0): ConvTranspose2d(128, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (decoder_3): Sequential(
+    (0): ReflectionPad2d((3, 3, 3, 3))
+    (1): Conv2d(64, 1, kernel_size=(7, 7), stride=(1, 1))
+    (2): Tanh()
+  )
+)
+Total number of parameters: 123447809
+-----------------------------------------------
+model [ResViT_model] was created
+Traceback (most recent call last):
+  File "test.py", line 19, in <module>
+    visualizer = Visualizer(opt)
+  File "/home/hoo/projects/wxd/GANs/ResViT-main/util/visualizer.py", line 21, in __init__
+    import visdom
+ModuleNotFoundError: No module named 'visdom'
