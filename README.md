@@ -14,7 +14,7 @@ pip install -r requirements.txt
 pip install -e .
 ```
 Model Download
-The MUSK models can be accessed from HuggingFace Hub.
+The MUSK models can be accessed from [HuggingFace Hub](www.baidu.com).
 
 You need to agree to the terms to access the models and login with your HuggingFace write token:
 
