@@ -94,13 +94,14 @@ BRACS datasets for 3 and 6 classes are available for download at https://www.bra
 To begin, download the required datasets. For demonstration purposes, we provide example datasets available here. The UniToPatho dataset has been downsampled to 224×224 resolution to enable faster downloads, as the original dataset exceeds 300GB in size. (As such, performance may vary slightly compared to the results reported in the paper.) Once downloaded, unzip the dataset to a local directory, such as /root/to/downstreams_demo. Next, update the directory path to dataset_root=/root/to/downstreams_demo. The code will then automatically extract features and carry out evaluations.
 
 The main file is clip_benchmark.cli and includes the following options:
-
+```
 --pretrained_model: Specifies the model name and the path to its weights.
 --dataset: Indicates the evaluation dataset(s); multiple datasets can be specified.
 --dataset_root: The root of datasets.
 --task: Defines the evaluation task.
 --batch_size: Sets the batch size for feature extraction.
 --output: Specifies where to save the output results.
+```
 Set the models.txt file with entries in the format: (model_name, model_path). If you want to run both MUSK and CONCH for comparison, your models.txt might look like this:
 
 musk_large_patch16_384,hf_hub:xiangjx/musk
