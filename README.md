@@ -94,14 +94,13 @@ BRACS datasets for 3 and 6 classes are available for download at https://www.bra
 To begin, download the required datasets. For demonstration purposes, we provide example datasets available here. The UniToPatho dataset has been downsampled to 224×224 resolution to enable faster downloads, as the original dataset exceeds 300GB in size. (As such, performance may vary slightly compared to the results reported in the paper.) Once downloaded, unzip the dataset to a local directory, such as /root/to/downstreams_demo. Next, update the directory path to dataset_root=/root/to/downstreams_demo. The code will then automatically extract features and carry out evaluations.
 
 The main file is clip_benchmark.cli and includes the following options:
-```
+
 --pretrained_model: Specifies the model name and the path to its weights.
 --dataset: Indicates the evaluation dataset(s); multiple datasets can be specified.
 --dataset_root: The root of datasets.
 --task: Defines the evaluation task.
 --batch_size: Sets the batch size for feature extraction.
 --output: Specifies where to save the output results.
-```
 Set the models.txt file with entries in the format: (model_name, model_path). If you want to run both MUSK and CONCH for comparison, your models.txt might look like this:
 
 musk_large_patch16_384,hf_hub:xiangjx/musk
@@ -111,7 +110,7 @@ Alternatively, you can remove the CONCH entry and run MUSK alone.
 Some example commands:
 
 # >>>>>>>>>>> zero-shot image-text retrieval >>>>>>>>>>> #
- python3 -m clip_benchmark.cli eval --pretrained_model models.txt \
+``` python3 -m clip_benchmark.cli eval --pretrained_model models.txt \
         --dataset   "pathmmu_retrieval"  \
         --task "zeroshot_retrieval" \
         --batch_size 256 \
@@ -120,7 +119,9 @@ Some example commands:
         --recall_k 1 10 50 \
         --dataset_root "/root/to/downstreams_demo" \
         --output "./results/benchmark_mm_retrieval.json"
+```
 # >>>>>>>>>>> few-shot image classification >>>>>>>>>>> #
+```
 for k_shot in "${shot_list[@]}"
 do
   for seed in "${seed_list[@]}"
@@ -136,7 +137,9 @@ do
           --output "./results/benchmark_fs_${k_shot}shot_seed${seed}.json"
   done
 done
+```
 # >>>>>>>>>>> zero-shot image2image retrieval >>>>>>>>>>> #
+```
 python3 -m clip_benchmark.cli eval --pretrained_model models.txt \
         --dataset   "unitopatho_retrieval" \
         --task "image_retrieval" \
@@ -146,6 +149,7 @@ python3 -m clip_benchmark.cli eval --pretrained_model models.txt \
         --dataset_root "/root/to/downstreams_demo" \
         --output "./results/benchmark_image_retrieval.json"
 and more tasks in ./benchmarks/demo.ipynb.
+```
 
 Acknowledgements
 The project was built on many amazing open-source repositories: Quilt1M, PathAsst, torchscale, accelerate (model pretraining), deepspeed (model pretraining), pytorch-lightning (downstream finetuning), CLIP Benchmark (model evaluation), and PORPOISE (prognosis). We thank the authors and developers for their contributions.
