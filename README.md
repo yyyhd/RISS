@@ -11,7 +11,8 @@ Create a new enviroment with anaconda.
 conda activate RISS
 pip install --upgrade pip
 pip install -r requirements.txt
-pip install -e .```
+pip install -e .
+```
 Model Download
 The MUSK models can be accessed from HuggingFace Hub.
 
