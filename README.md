@@ -7,11 +7,11 @@ First clone the repo and cd into the directory:
 git clone https://github.com/yyyhd/RISS
 Create a new enviroment with anaconda.
 
-'''conda create -n RISS python=3.7 -y --no-default-packages
+```conda create -n RISS python=3.7 -y --no-default-packages
 conda activate RISS
 pip install --upgrade pip
 pip install -r requirements.txt
-pip install -e .'''
+pip install -e .```
 Model Download
 The MUSK models can be accessed from HuggingFace Hub.
 
