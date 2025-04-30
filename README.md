@@ -67,5 +67,6 @@ The project was built on many amazing open-source repositories: Quilt1M, PathAss
 
 Issues
 Please open new threads or address questions to 19861121087@163.com
+
 License
 This model and associated code are released under the CC-BY-NC-ND 4.0 license and may only be used for non-commercial, academic research purposes with proper attribution. Any commercial use, sale, or other monetization of the MUSK model and its derivatives, which include models trained on outputs from the MUSK model or datasets created from the MUSK model, is prohibited and requires prior approval.
