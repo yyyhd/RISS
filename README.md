@@ -58,7 +58,8 @@ python3 test.py --dataroot Datasets/IXI/dataset/mammography_re/ --name le_re --g
 ```
 ## Public data Availability:
 
-The low-energy and minimized contrast-enhanced mammography image classification digital database (CDD-CESM):[https://github.com/omar-mohamed/CDD-CESM-Dataset](https://github.com/omar-mohamed/CDD-CESM-Dataset). Contrast-enhanced spectral mammography at Universitario Campus Bio-Medico (CESM@UCBM):[http://www.cosbi-lab.it/cesmucbm/](http://www.cosbi-lab.it/cesmucbm/)
+The low-energy and minimized contrast-enhanced mammography image classification digital database (CDD-CESM):[https://github.com/omar-mohamed/CDD-CESM-Dataset](https://github.com/omar-mohamed/CDD-CESM-Dataset). 
+Contrast-enhanced spectral mammography at Universitario Campus Bio-Medico (CESM@UCBM):[http://www.cosbi-lab.it/cesmucbm/](http://www.cosbi-lab.it/cesmucbm/)
 
 Acknowledgements
 The project was built on many amazing open-source repositories: Quilt1M, PathAsst, torchscale, accelerate (model pretraining), deepspeed (model pretraining), pytorch-lightning (downstream finetuning), CLIP Benchmark (model evaluation), and PORPOISE (prognosis). We thank the authors and developers for their contributions.
