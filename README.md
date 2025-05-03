@@ -57,9 +57,9 @@ python3 test.py --dataroot Datasets/IXI/dataset/le_re/ --name le_re --gpu_ids 0 
 python3 test.py --dataroot Datasets/IXI/dataset/mammography_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 1 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
 ```
 ## Public data Availability:
-```
+
 The low-energy and minimized contrast-enhanced mammography image classification digital database (CDD-CESM):(https://github.com/omar-mohamed/CDD-CESM-Dataset). Contrast-enhanced spectral mammography at Universitario Campus Bio-Medico (CESM@UCBM):(http://www.cosbi-lab.it/cesmucbm/)
-```
+
 Acknowledgements
 The project was built on many amazing open-source repositories: Quilt1M, PathAsst, torchscale, accelerate (model pretraining), deepspeed (model pretraining), pytorch-lightning (downstream finetuning), CLIP Benchmark (model evaluation), and PORPOISE (prognosis). We thank the authors and developers for their contributions.
 
