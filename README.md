@@ -28,10 +28,8 @@ CUDA >= 11.2
 
 ### 🔗 Download Model Weights
 
-You can download the trained weights from Hugging Face:
-```
-[https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth](https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth)
-```
+You can download the trained weights from [HuggingFace Hub](https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth):
+
 ### 🔧 Model Weights Usage
 
 Please place the downloaded model weights file (e.g., `latest_net_G.pth`) in the following directory:
