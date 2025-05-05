@@ -62,11 +62,11 @@ The low-energy and minimized contrast-enhanced mammography image classification 
 
 Contrast-enhanced spectral mammography at Universitario Campus Bio-Medico (CESM@UCBM):[http://www.cosbi-lab.it/cesmucbm/](http://www.cosbi-lab.it/cesmucbm/)
 
-Acknowledgements
-The project was built on many amazing open-source repositories: Quilt1M, PathAsst, torchscale, accelerate (model pretraining), deepspeed (model pretraining), pytorch-lightning (downstream finetuning), CLIP Benchmark (model evaluation), and PORPOISE (prognosis). We thank the authors and developers for their contributions.
+## Acknowledgements
+.
 
-Issues
-Please open new threads or address questions to 19861121087@163.com
+## Issues
+Please open new threads or address questions to sen.yang.scu@gmail.com
 
-License
+## License
 This model and associated code are released under the CC-BY-NC-ND 4.0 license and may only be used for non-commercial, academic research purposes with proper attribution. Any commercial use, sale, or other monetization of the MUSK model and its derivatives, which include models trained on outputs from the MUSK model or datasets created from the MUSK model, is prohibited and requires prior approval.
