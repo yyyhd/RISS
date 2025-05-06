@@ -4,8 +4,8 @@ import numpy as np
 from skimage.metrics import structural_similarity as ssim
 
 # 指定两个文件夹路径分别存储PNG格式图像
-folder1 = r"D:\code\cem1\RISS1\buchong\Evaluation\real"
-folder2 = r"D:\code\cem1\RISS1\buchong\Evaluation\syn"
+folder1 = "Evaluation/real"
+folder2 = "Evaluation/syn"
 # 获取文件夹中所有文件名
 files1 = os.listdir(folder1)
 files2 = os.listdir(folder2)
