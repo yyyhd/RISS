@@ -46,6 +46,7 @@ Before the CEM images were input into the RISS, an algorithm based on automatic 
   ├── val
   ├── le_re  ├── test
   ├── mammography_re  ├── test
+  ├── public  ├── test
 ```
 
 ## Basic Usage: Generate recombind images from low-energy images:
@@ -60,6 +61,16 @@ python3 test.py --dataroot Datasets/IXI/dataset/mammography_re/ --name le_re --g
 ### Reproducibility:
 To reproduce the results in our paper, please download the low-energy and minimized contrast-enhanced mammography image classification digital database [(CDD-CESM)](https://github.com/omar-mohamed/CDD-CESM-Dataset) and contrast-enhanced spectral mammography at Universitario Campus Bio-Medico [CESM@UCBM](http://www.cosbi-lab.it/cesmucbm/).
 
+## Basic Usage: Generate recombind images from public images:
+```
+python3 test.py --dataroot Datasets/IXI/dataset/public/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 1 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
+```
+## evaluation indicator
+```
+cd Evaluation
+python PSNR.py
+python SSIM.py
+```
 ## Acknowledgements
 
 
