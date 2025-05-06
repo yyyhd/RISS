@@ -4,8 +4,8 @@ import numpy as np
 from scipy import signal
 from enum import Enum
 
-real_folder = r"D:\code\cem1\RISS1\buchong\Evaluation\real"
-fake_folder = r"D:\code\cem1\RISS1\buchong\Evaluation\syn"
+real_folder = ""Evaluation/real""
+fake_folder = ""Evaluation/syn"
 
 
 def filter2(img, fltr, mode='same'):
