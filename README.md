@@ -28,10 +28,8 @@ CUDA >= 11.2
 
 ### 🔗 Download Model Weights
 
-You can download the trained weights from Hugging Face:
-```
-[https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth](https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth)
-```
+You can download the trained weights from [HuggingFace Hub](https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth):
+
 ### 🔧 Model Weights Usage
 
 Please place the downloaded model weights file (e.g., `latest_net_G.pth`) in the following directory:
@@ -58,14 +56,15 @@ python3 test.py --dataroot Datasets/IXI/dataset/le_re/ --name le_re --gpu_ids 0 
 ```
 python3 test.py --dataroot Datasets/IXI/dataset/mammography_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 1 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
 ```
-## Public data Availability:
-```
-The low-energy and minimized contrast-enhanced mammography image classification digital database (CDD-CESM):(https://github.com/omar-mohamed/CDD-CESM-Dataset). Contrast-enhanced spectral mammography at Universitario Campus Bio-Medico (CESM@UCBM):(http://www.cosbi-lab.it/cesmucbm/)
-```
-Acknowledgements
-The project was built on many amazing open-source repositories: Quilt1M, PathAsst, torchscale, accelerate (model pretraining), deepspeed (model pretraining), pytorch-lightning (downstream finetuning), CLIP Benchmark (model evaluation), and PORPOISE (prognosis). We thank the authors and developers for their contributions.
+## Evaluation
+### Reproducibility:
+To reproduce the results in our paper, please download the low-energy and minimized contrast-enhanced mammography image classification digital database [(CDD-CESM)](https://github.com/omar-mohamed/CDD-CESM-Dataset) and contrast-enhanced spectral mammography at Universitario Campus Bio-Medico [CESM@UCBM](http://www.cosbi-lab.it/cesmucbm/).
 
-Issues
-Please open new threads or address questions to xiangjx@stanford.edu or xiyue.wang.scu@gmail.com
-License
+## Acknowledgements
+
+
+## Issues
+Please open new threads or address questions to sen.yang.scu@gmail.com
+
+## License
 This model and associated code are released under the CC-BY-NC-ND 4.0 license and may only be used for non-commercial, academic research purposes with proper attribution. Any commercial use, sale, or other monetization of the MUSK model and its derivatives, which include models trained on outputs from the MUSK model or datasets created from the MUSK model, is prohibited and requires prior approval.
