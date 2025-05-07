@@ -39,7 +39,7 @@ Please place the downloaded model weights file (e.g., `latest_net_G.pth`) in the
 ```
 
 ## Dataset
-Before the CEM images were input into the RISS, an algorithm based on automatic threshold segmentation (Otsu) was implemented to isolate the mammary gland from the background. Following the cropping of the breast area, the images were standardized to a resolution of 512×1024 pixels and normalized. To create a two-dimensional image suitable for input into the generator network, the low-energy image and recombined image for each view, along with all-zero images (CC and MLO views), were assigned to the red, green, and blue channels of the RGB image, respectively. During the subsequent network training process, the network was guided to generate a recombined image for the green channel based on the low-energy image in the red channel.
+Before the CEM images were input into the RISS, an algorithm based on automatic threshold segmentation (Otsu) was implemented to isolate the mammary gland from the background. Following the cropping of the breast area, the images were  unified to a resolution of 512×1024 pixels and normalized. To create a two-dimensional image suitable for input into the generator network, the low-energy image and recombined image for each view, along with all-zero images (CC and MLO views), were assigned to the red, green, and blue channels of the RGB image, respectively. During the subsequent network training process, the network was guided to generate a recombined image for the green channel based on the low-energy image in the red channel.
 ```
 /Datasets/
   ├── train
