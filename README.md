@@ -74,7 +74,7 @@ python SSIM.py
 ## Acknowledgements
 
 ## Issues
-Please open new threads or address questions to sen.yang.scu@gmail.com
+Please open new threads or address questions to maoning@pku.edu.cn or sen.yang.scu@gmail.com
 
 ## License
 
