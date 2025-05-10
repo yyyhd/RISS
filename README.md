@@ -72,9 +72,11 @@ python PSNR.py
 python SSIM.py
 ```
 ## Acknowledgements
+The project was built on many amazing open-source repositories: ResViT,  pGAN, and pix2pix. We thank the authors and developers for their contributions.
 
 ## Issues
 Please open new threads or address questions to maoning@pku.edu.cn or sen.yang.scu@gmail.com
 
 ## License
+This model may only be used for non-commercial, academic research purposes with proper attribution. Any commercial use, sale, or other monetization of the RISS model and its derivatives, which include models trained on outputs from the RISS model or datasets created from the RISS model, is prohibited and requires prior approval.
 
