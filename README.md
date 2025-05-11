@@ -59,7 +59,7 @@ python3 test.py --dataroot Datasets/IXI/dataset/mammography_re/ --name le_re --g
 ```
 ## Evaluation
 ### Reproducibility:
-To reproduce the results in our paper, please download the low-energy and minimized contrast-enhanced mammography image classification digital database [(CDD-CESM)](https://github.com/omar-mohamed/CDD-CESM-Dataset) and contrast-enhanced spectral mammography at Universitario Campus Bio-Medico [CESM@UCBM](http://www.cosbi-lab.it/cesmucbm/).
+To reproduce the results in our paper, please download the low-energy and minimized contrast-enhanced mammography image classification digital database [(CDD-CESM)](https://github.com/omar-mohamed/CDD-CESM-Dataset) and contrast-enhanced spectral mammography at Universitario Campus Bio-Medico [CESM@UCBM](http://www.cosbi-lab.it/cesmucbm/). Place the data in the `/dataset/public/test directory`.
 
 ## Basic Usage: Generate recombind images from public images:
 ```
