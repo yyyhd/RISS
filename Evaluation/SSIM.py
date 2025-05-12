@@ -118,8 +118,6 @@ def calculate_ssim_for_folder_pairs(real_folder, fake_folder):
     q75, q25 = np.percentile(all_img_sims, [75 ,25])
     iqr = q75 - q25
     
-    print(f"Average SSIM for all image pairs: {average_img_sim}")
-    print(f"Standard deviation of SSIM values: {std_dev_img_sim}")
     print(f"Median SSIM for all image pairs: {median_img_sim}")
     print(f"Interquartile range (IQR) of SSIM values: {iqr}")
     print(f"Q75: {q75}, Q25: {q25}")
