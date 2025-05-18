@@ -26,11 +26,14 @@ ml_collections
 CUDA >= 11.2
 ```
 ### 🔗 Download pre-trained ViT models from Google
-#
+
 wget https://storage.googleapis.com/vit_models/imagenet21k/R50+ViT-B_16.npz &&
-mkdir ../model/vit_checkpoint/imagenet21k &&
-mv {MODEL_NAME}.npz ../model/vit_checkpoint/imagenet21k/R50-ViT-B_16.npz
-#
+```
+../model/vit_checkpoint/imagenet21k/
+└── R50-ViT-B_16.npz
+```
+
+
 ### 🔗 Download Model Weights
 
 You can download the trained weights from [HuggingFace Hub](https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth):
