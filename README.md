@@ -30,7 +30,7 @@ CUDA >= 11.2
 https://storage.googleapis.com/vit_models/imagenet21k/R50+ViT-B_16.npz &&
 ```
 /model/vit_checkpoint/imagenet21k/
-└── R50-ViT-B_16.npz
+├── R50-ViT-B_16.npz
 ```
 
 
