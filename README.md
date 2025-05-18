@@ -26,7 +26,6 @@ ml_collections
 CUDA >= 11.2
 ```
 ### 🔗 Download pre-trained ViT models from Google
-Pre-trained ViT models:
 #
 wget https://storage.googleapis.com/vit_models/imagenet21k/R50+ViT-B_16.npz &&
 mkdir ../model/vit_checkpoint/imagenet21k &&
