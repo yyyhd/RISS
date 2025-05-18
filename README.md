@@ -59,11 +59,11 @@ Before the CEM images were input into the RISS, an algorithm based on automatic 
 
 ## Basic Usage: Generate recombind images from low-energy images:
 ```
-python3 test.py --dataroot Datasets/IXI/dataset/le_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 1 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
+python test.py --dataroot Datasets/IXI/dataset/le_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
 ```
 ## Basic Usage: Generate recombind images from mammography images:
 ```
-python3 test.py --dataroot Datasets/IXI/dataset/mammography_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 1 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
+python test.py --dataroot Datasets/IXI/dataset/mammography_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
 ```
 ## Evaluation
 ### Reproducibility:
@@ -71,7 +71,7 @@ To reproduce the results in our paper, please download the low-energy and minimi
 
 ## Basic Usage: Generate recombind images from public images:
 ```
-python3 test.py --dataroot Datasets/IXI/dataset/public/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 1 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
+python test.py --dataroot Datasets/IXI/dataset/public/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
 ```
 ## evaluation indicator
 ```
