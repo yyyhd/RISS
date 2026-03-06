@@ -1,10 +1,10 @@
 import torch
 from collections import OrderedDict
-from torch.autograd import Variable
-import util.util as util
+from torch. autograd import Variable
+import util. util as util
 from util.image_pool import ImagePool
 from .base_model import BaseModel
-from . import networks
+from. import networks
 from torchvision import models
 
 class ResViT_model(BaseModel):
