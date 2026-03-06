@@ -20,7 +20,7 @@ class BaseOptions():
         self.parser.add_argument('--output_nc', type=int, default=3, help='# of output image channels')
         self.parser.add_argument('--ngf', type=int, default=64, help='# of gen filters in first conv layer')
         self.parser.add_argument('--ndf', type=int, default=64, help='# of discrim filters in first conv layer')
-        self.parser.add_argument('--which_model_netD', type=str, default='basic', help='selects model to use for netD')
+        self.parser.add_argument('--which_model_netD', type=str, default='multiscale', help='selects model to use for netD')
         self.parser.add_argument('--which_model_netG', type=str, default='resvit', help='selects model to use for netG')
         self.parser.add_argument('--n_layers_D', type=int, default=3, help='only used if which_model_netD==n_layers')
         self.parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
@@ -47,7 +47,7 @@ class BaseOptions():
         self.parser.add_argument('--pre_trained_path', type=str,default='/media/data/wxd/Checkpoints/le_re_pre/latest_net_G.pth',help='path to the pre-trained resnet architecture')
         self.parser.add_argument('--pre_trained_transformer', type=int, default=1,help='Pre-trained ViT or not')
         self.parser.add_argument('--pre_trained_resnet', type=int, default=0,help='Pre-trained residual CNNs or not')
-
+        self.parser.add_argument('--medsam_path', type=str, default='', help='Path to pre-trained MedSAM ViT weights')###
         self.initialized = True
 
     def parse(self):
