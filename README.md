@@ -36,7 +36,16 @@ https://storage.googleapis.com/vit_models/imagenet21k/R50+ViT-B_16.npz &&
 
 ### 🔗 Download Model Weights
 
-You can download the trained weights from [HuggingFace Hub](https://huggingface.co/baguai/RISS1/resolve/main/latest_net_G.pth):
+You can download the trained weights from:
+# Make sure git-xet is installed (https://hf.co/docs/hub/git-xet)
+git xet install
+
+git clone https://huggingface.co/wxd19861121087/RISS
+
+# You'll be prompted for your HF credentials
+git push
+
+
 
 ### 🔧 Model Weights Usage
 
