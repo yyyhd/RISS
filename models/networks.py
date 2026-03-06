@@ -163,9 +163,18 @@ def define_D(input_nc, ndf, which_model_netD,vit_name,img_size,
         netD = NLayerDiscriminator(input_nc, ndf, n_layers_D, norm_layer=norm_layer, use_sigmoid=use_sigmoid, gpu_ids=gpu_ids)
     elif which_model_netD == 'pixel':
         netD = PixelDiscriminator(input_nc, ndf, norm_layer=norm_layer, use_sigmoid=use_sigmoid, gpu_ids=gpu_ids)
+    elif which_model_netD == 'multiscale':
+            # netD = NLayerDiscriminator1(input_nc, ndf, n_layers=n_layers_D,
+            #                             norm_layer=norm_layer,
+            #                             use_sigmoid=use_sigmoid,
+            #                             getIntermFeat=True)
+            netD = NLayerDiscriminator1(input_nc, ndf, n_layers=n_layers_D,
+                                           norm_layer=norm_layer,
+                                           use_sigmoid=use_sigmoid,
+                                           num_D=3, gpu_ids=gpu_ids)  # 3个尺度
     else:
-        raise NotImplementedError('Discriminator model name [%s] is not recognized' %
-                                  which_model_netD)
+        raise NotImplementedError('Discriminator model name [%s] is not recognized' % which_model_netD)
+
     if use_gpu:
         netD.cuda(gpu_ids[0])
     init_weights(netD, init_type=init_type)
@@ -189,44 +198,76 @@ def print_network(net):
 # When LSGAN is used, it is basically same as MSELoss,
 # but it abstracts away the need to create the target label tensor
 # that has the same size as the input
+# class GANLoss(nn.Module):
+#     def __init__(self, use_lsgan=True, target_real_label=1.0, target_fake_label=0.0,
+#                  tensor=torch.FloatTensor):
+#         super(GANLoss, self).__init__()
+#         self.real_label = target_real_label
+#         self.fake_label = target_fake_label
+#         self.real_label_var = None
+#         self.fake_label_var = None
+#         self.Tensor = tensor
+#         if use_lsgan:
+#             self.loss = nn.MSELoss()
+#         else:
+#             self.loss = nn.BCELoss()
+
+#     def get_target_tensor(self, input, target_is_real):
+#         target_tensor = None
+#         if target_is_real:
+#             create_label = ((self.real_label_var is None) or
+#                             (self.real_label_var.numel() != input.numel()))
+#             if create_label:
+#                 real_tensor = self.Tensor(input.size()).fill_(self.real_label)
+#                 self.real_label_var = Variable(real_tensor, requires_grad=False)
+#             target_tensor = self.real_label_var
+#         else:
+#             create_label = ((self.fake_label_var is None) or
+#                             (self.fake_label_var.numel() != input.numel()))
+#             if create_label:
+#                 fake_tensor = self.Tensor(input.size()).fill_(self.fake_label)
+#                 self.fake_label_var = Variable(fake_tensor, requires_grad=False)
+#             target_tensor = self.fake_label_var
+#         return target_tensor
+
+#     def __call__(self, input, target_is_real):
+#         target_tensor = self.get_target_tensor(input, target_is_real)
+#         return self.loss(input, target_tensor)
+
+
 class GANLoss(nn.Module):
     def __init__(self, use_lsgan=True, target_real_label=1.0, target_fake_label=0.0,
                  tensor=torch.FloatTensor):
         super(GANLoss, self).__init__()
         self.real_label = target_real_label
         self.fake_label = target_fake_label
-        self.real_label_var = None
-        self.fake_label_var = None
-        self.Tensor = tensor
+        self.use_lsgan = use_lsgan
         if use_lsgan:
             self.loss = nn.MSELoss()
         else:
             self.loss = nn.BCELoss()
 
     def get_target_tensor(self, input, target_is_real):
-        target_tensor = None
+        """Create label tensor with the same size as input."""
         if target_is_real:
-            create_label = ((self.real_label_var is None) or
-                            (self.real_label_var.numel() != input.numel()))
-            if create_label:
-                real_tensor = self.Tensor(input.size()).fill_(self.real_label)
-                self.real_label_var = Variable(real_tensor, requires_grad=False)
-            target_tensor = self.real_label_var
+            label = self.real_label
         else:
-            create_label = ((self.fake_label_var is None) or
-                            (self.fake_label_var.numel() != input.numel()))
-            if create_label:
-                fake_tensor = self.Tensor(input.size()).fill_(self.fake_label)
-                self.fake_label_var = Variable(fake_tensor, requires_grad=False)
-            target_tensor = self.fake_label_var
-        return target_tensor
+            label = self.fake_label
+        # Use torch.full_like to create label tensor on same device/dtype
+        return torch.full_like(input, label, requires_grad=False)
 
     def __call__(self, input, target_is_real):
-        target_tensor = self.get_target_tensor(input, target_is_real)
-        return self.loss(input, target_tensor)
-
-
-
+        if isinstance(input, list):
+            # Multi-scale or multi-layer loss
+            loss = 0.0
+            for pred_i in input:
+                target_tensor = self.get_target_tensor(pred_i, target_is_real)
+                loss += self.loss(pred_i, target_tensor)
+            return loss / len(input)  # average over scales
+        else:
+            # Single output
+            target_tensor = self.get_target_tensor(input, target_is_real)
+            return self.loss(input, target_tensor)
 
 
 
@@ -642,3 +683,135 @@ class PixelDiscriminator(nn.Module):
             return nn.parallel.data_parallel(self.net, input, self.gpu_ids)
         else:
             return self.net(input)
+        
+# class NLayerDiscriminator1(nn.Module):
+#     def __init__(self, input_nc, ndf=64, n_layers=3, norm_layer=nn.BatchNorm2d, use_sigmoid=False, getIntermFeat=False):
+#         super(NLayerDiscriminator1, self).__init__()
+#         self.getIntermFeat = getIntermFeat
+#         self.n_layers = n_layers
+#
+#         kw = 4
+#         padw = int(np.ceil((kw-1.0)/2))
+#         sequence = [[nn.Conv2d(input_nc, ndf, kernel_size=kw, stride=2, padding=padw), nn.LeakyReLU(0.2, True)]]
+#
+#         nf = ndf
+#         for n in range(1, n_layers):
+#             nf_prev = nf
+#             nf = min(nf * 2, 512)
+#             sequence += [[
+#                 nn.Conv2d(nf_prev, nf, kernel_size=kw, stride=2, padding=padw),
+#                 norm_layer(nf), nn.LeakyReLU(0.2, True)
+#             ]]
+#
+#         nf_prev = nf
+#         nf = min(nf * 2, 512)
+#         sequence += [[
+#             nn.Conv2d(nf_prev, nf, kernel_size=kw, stride=1, padding=padw),
+#             norm_layer(nf),
+#             nn.LeakyReLU(0.2, True)
+#         ]]
+#
+#         sequence += [[nn.Conv2d(nf, 1, kernel_size=kw, stride=1, padding=padw)]]
+#
+#         if use_sigmoid:
+#             sequence += [[nn.Sigmoid()]]
+#
+#         if getIntermFeat:
+#             for n in range(len(sequence)):
+#                 setattr(self, 'model'+str(n), nn.Sequential(*sequence[n]))
+#         else:
+#             sequence_stream = []
+#             for n in range(len(sequence)):
+#                 sequence_stream += sequence[n]
+#             self.model = nn.Sequential(*sequence_stream)
+#
+#     def forward(self, input):
+#         if self.getIntermFeat:
+#             res = [input]
+#             for n in range(self.n_layers+2):
+#                 model = getattr(self, 'model'+str(n))
+#                 res.append(model(res[-1]))
+#             return res[1:]
+#         else:
+#             return self.model(input)
+#
+#         # 在 networks.py 中添加
+#
+
+class NLayerDiscriminator1(nn.Module):
+
+    def __init__(self, input_nc, ndf=64, n_layers=3, norm_layer=nn.BatchNorm2d,
+                 use_sigmoid=False, num_D=3, gpu_ids=[] ):
+        """
+        参数:
+            input_nc: 输入通道数 (A+B)
+            ndf: 第一层的filter数量
+            n_layers: 每个判别器的层数
+            num_D: 判别器的数量（默认3个尺度）
+        """
+        super(NLayerDiscriminator1, self).__init__()
+        self.num_D = num_D
+        self.n_layers = n_layers
+
+        for i in range(num_D):
+            netD = NLayerDiscriminator(input_nc, ndf, n_layers, norm_layer,
+                                       use_sigmoid, gpu_ids=gpu_ids)
+            setattr(self, 'scale' + str(i) + '_layer', netD)
+
+        self.downsample = nn.AvgPool2d(3, stride=2, padding=[1, 1],
+                                       count_include_pad=False)
+
+    def singleD_forward(self, model, input):
+        """单个判别器的前向传播"""
+        return model(input)
+
+    def forward(self, input):
+        """
+        前向传播
+        返回: 列表，包含每个尺度的判别结果
+              result[0]: 256×256 的判别（关注细节）
+              result[1]: 128×128 的判别（关注局部）
+              result[2]: 64×64 的判别（关注整体）
+        """
+        result = []
+        input_downsampled = input
+
+        for i in range(self.num_D):
+            if i != 0:
+                input_downsampled = self.downsample(input_downsampled)
+            model = getattr(self, 'scale' + str(i) + '_layer')
+            result.append(self.singleD_forward(model, input_downsampled))
+        return result
+
+from torchvision import models
+class Vgg19(torch.nn.Module):
+    def __init__(self, requires_grad=False):
+        super(Vgg19, self).__init__()
+        vgg_pretrained_features = models.vgg19(pretrained=True).features
+        self.slice1 = torch.nn.Sequential()
+        self.slice2 = torch.nn.Sequential()
+        self.slice3 = torch.nn.Sequential()
+        self.slice4 = torch.nn.Sequential()
+        self.slice5 = torch.nn.Sequential()
+        for x in range(2):
+            self.slice1.add_module(str(x), vgg_pretrained_features[x])
+        for x in range(2, 7):
+            self.slice2.add_module(str(x), vgg_pretrained_features[x])
+        for x in range(7, 12):
+            self.slice3.add_module(str(x), vgg_pretrained_features[x])
+        for x in range(12, 21):
+            self.slice4.add_module(str(x), vgg_pretrained_features[x])
+        for x in range(21, 30):
+            self.slice5.add_module(str(x), vgg_pretrained_features[x])
+        if not requires_grad:
+            for param in self.parameters():
+                param.requires_grad = False
+
+    def forward(self, X):
+        h_relu1 = self.slice1(X)
+        h_relu2 = self.slice2(h_relu1)        
+        h_relu3 = self.slice3(h_relu2)        
+        h_relu4 = self.slice4(h_relu3)        
+        h_relu5 = self.slice5(h_relu4)                
+        out = [h_relu1, h_relu2, h_relu3, h_relu4, h_relu5]
+        return out
