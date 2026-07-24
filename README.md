@@ -93,7 +93,6 @@ Reproducing this exact preprocessing keeps the input on the training distributio
 
 ## Requirements
 
-- Python 3.x, PyTorch (CUDA recommended; CPU works but is slow)
 - Pretrained generator weights at:
   ```text
   Checkpoints/le_re/latest_net_G.pth
