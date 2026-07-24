@@ -176,7 +176,7 @@ cd Evaluation
 python PSNR.py
 python SSIM.py
 ```
-## Train
+### Train
 ```
 /Datasets/
   ├── train
