@@ -100,41 +100,13 @@ Reproducing this exact preprocessing keeps the input on the training distributio
 
 ---
 
-## Option A — Run the notebook (recommended)
+## Run the notebook
 
 ```bash
 jupyter notebook notebooks/RISS_inference_demo.ipynb
 ```
 
 Run the cells top to bottom. The notebook checks the environment, preprocesses the bundled example, runs inference, and displays a three-panel comparison (raw original → preprocessed LE → synthetic recombined).
-
-## Option B — Run from the command line
-
-```bash
-python test.py \
-  --dataroot Datasets/notebook_demo \
-  --name le_re \
-  --gpu_ids 0 \
-  --model resvit_one \
-  --which_model_netG resvit \
-  --pre_trained_transformer 0 \
-  --dataset_mode aligned \
-  --norm batch \
-  --phase test \
-  --output_nc 1 \
-  --input_nc 3 \
-  --how_many 1 \
-  --serial_batches \
-  --fineSize 256 \
-  --loadSize 256 \
-  --results_dir results/notebook_demo \
-  --checkpoints_dir Checkpoints \
-  --which_epoch latest
-```
-
-Use `--gpu_ids -1` to run on CPU.
-
----
 
 ## Output
 
