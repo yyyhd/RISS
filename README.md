@@ -52,10 +52,7 @@ Before the CEM images were input into the RISS, an algorithm based on automatic 
   ├── mammography_re  ├── test
   ├── public  ├── test
 ```
-## Basic Usage: Train RISS for low-energy-to-recombined image synthesis:
-```
-python train.py --dataroot dataset/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase train --output_nc 1 --input_nc 3 --batchSize 1 --fineSize 256 --loadSize 256 --niter 100 --niter_decay 100 --lr 0.0002 --lambda_A 100 --lambda_adv 1 --serial_batches --checkpoints_dir Checkpoints --display_id -1
-```
+
 ## Basic Usage: Generate recombind images from low-energy images:
 ```
 python test.py --dataroot Datasets/IXI/dataset/le_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
@@ -78,6 +75,11 @@ cd Evaluation
 python PSNR.py
 python SSIM.py
 ```
+## Basic Usage: Train RISS for low-energy-to-recombined image synthesis:
+```
+python train.py --dataroot dataset/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase train --output_nc 1 --input_nc 3 --batchSize 1 --fineSize 256 --loadSize 256 --niter 100 --niter_decay 100 --lr 0.0002 --lambda_A 100 --lambda_adv 1 --serial_batches --checkpoints_dir Checkpoints --display_id -1
+```
+
 ## Acknowledgements
 The project was built on many amazing open-source repositories: ResViT,  pGAN, and pix2pix. We thank the authors and developers for their contributions.
 
