@@ -153,8 +153,7 @@ python SSIM.py
   ├── train
   ├── val
 ```
-### Train RISS for low-energy-to-recombined image synthesis: 
-## Use the following command to train RISS on spatially aligned pairs of low-energy images and their corresponding real recombined images. 
+### Train RISS for low-energy-to-recombined image synthesis: Use the following command to train RISS on spatially aligned pairs of low-energy images and their corresponding real recombined images. 
 ```
 python train.py --dataroot dataset/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase train --output_nc 1 --input_nc 3 --batchSize 1 --fineSize 256 --loadSize 256 --niter 100 --niter_decay 100 --lr 0.0002 --lambda_A 100 --lambda_adv 1 --serial_batches --checkpoints_dir Checkpoints --display_id -1
 ```
