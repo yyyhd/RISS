@@ -154,7 +154,16 @@ python SSIM.py
   ├── val
 ```
 ### Train RISS for low-energy-to-recombined image synthesis: 
-Use the following command to train RISS on spatially aligned pairs of low-energy images and their corresponding real recombined images. This configuration launches the RISS training pipeline (resvit_one) with a ResViT-based generator, uses batch normalization, and jointly optimizes the image reconstruction loss and adversarial loss. The input and output images are processed at a resolution of 256 × 256 pixels. The model is trained for 100 epochs with a fixed learning rate of 0.0002, followed by another 100 epochs during which the learning rate is gradually decayed. Training is performed on GPU 0 with a batch size of 1, and the resulting model checkpoints are saved in the specified checkpoint directory.
+```
+Useful options
+
+Use --gpu_ids 0,1 to train on multiple GPUs.
+Modify --batchSize according to your available GPU memory.
+Adjust --fineSize and --loadSize to change the training image resolution.
+Change --checkpoints_dir to specify a different directory for saving model checkpoints.
+Use python train.py -h to inspect all available training options.
+```
+
 ```
 python train.py --dataroot dataset/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase train --output_nc 1 --input_nc 3 --batchSize 1 --fineSize 256 --loadSize 256 --niter 100 --niter_decay 100 --lr 0.0002 --lambda_A 100 --lambda_adv 1 --serial_batches --checkpoints_dir Checkpoints --display_id -1
 ```
