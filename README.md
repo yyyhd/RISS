@@ -161,9 +161,30 @@ python SSIM.py
 - Use `--fineSize` and `--loadSize` to change the training image resolution.
 - Use `--checkpoints_dir` to specify a different directory for saving model checkpoints.
 
-```
-python train.py --dataroot dataset/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase train --output_nc 1 --input_nc 3 --batchSize 1 --fineSize 256 --loadSize 256 --niter 100 --niter_decay 100 --lr 0.0002 --lambda_A 100 --lambda_adv 1 --serial_batches --checkpoints_dir Checkpoints --display_id -1
-```
+Stage 1: Train the CNN backbone
+
+python train.py --dataroot dataset/ --name le_re_stage1 --gpu_ids 0 \
+--model resvit_one --which_model_netG res_cnn --dataset_mode aligned \
+--norm batch --phase train --output_nc 1 --input_nc 3 --batchSize 1 \
+--fineSize 256 --loadSize 286 --niter 100 --niter_decay 0 \
+--lr 0.0002 --lambda_A 100 --lambda_adv 1 \
+--pre_trained_transformer 0 --pre_trained_resnet 0 \
+--checkpoints_dir Checkpoints --display_id -1
+
+Stage 2: Fine-tune the complete RISS model
+
+python train.py --dataroot dataset/ --name le_re --gpu_ids 0 \
+--model resvit_one --which_model_netG resvit --dataset_mode aligned \
+--norm batch --phase train --output_nc 1 --input_nc 3 --batchSize 1 \
+--fineSize 256 --loadSize 286 --niter 200 --niter_decay 0 \
+--lr 0.0001 --lambda_A 100 --lambda_adv 1 \
+--pre_trained_transformer 1 --pre_trained_resnet 1 \
+--pre_trained_path Checkpoints/le_re_stage1/latest_net_G.pth \
+--checkpoints_dir Checkpoints --display_id -1
+
+Images are resized to 286 × 286, randomly cropped to 256 × 256, and horizontally flipped with a probability of 0.5. The final weights are saved to:
+
+Checkpoints/le_re/latest_net_G.pth
 
 ## Acknowledgements
 The project was built on many amazing open-source repositories: ResViT,  pGAN, and pix2pix. We thank the authors and developers for their contributions.
