@@ -172,7 +172,7 @@ python train.py --dataroot dataset/ --name le_re_stage1 --gpu_ids 0 \
 --checkpoints_dir Checkpoints --display_id -1
 ```
 
-**Stage 2: Fine-tune the complete RISS model**
+**Stage 2: Train RISS model**
 ```
 python train.py --dataroot dataset/ --name le_re --gpu_ids 0 \
 --model resvit_one --which_model_netG resvit --dataset_mode aligned \
