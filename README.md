@@ -139,7 +139,7 @@ To reproduce the results in our paper, please download the low-energy and minimi
 
 ### Basic Usage: Generate recombind images from public images:
 ```
-python test.py --dataroot Datasets/IXI/dataset/public/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
+python test.py --dataroot Datasets/public/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
 ```
 ### Evaluation indicator
 ```
