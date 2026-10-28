@@ -156,7 +156,7 @@ python SSIM.py
 ### Train RISS for low-energy-to-recombined image synthesis: 
 **Useful options**
 
-- Use `--gpu_ids 0,1` to train on multiple GPUs.
+- Use `--gpu_ids 0` to train on multiple GPUs.
 - Use `--batchSize` according to your available GPU memory.
 - Use `--fineSize` and `--loadSize` to change the training image resolution.
 - Use `--checkpoints_dir` to specify a different directory for saving model checkpoints.
