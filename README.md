@@ -55,11 +55,11 @@ Before the CEM images were input into the RISS, an algorithm based on automatic 
 
 ## Basic Usage: Generate recombind images from low-energy images:
 ```
-python test.py --dataroot Datasets/le_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
+python test.py --dataroot Datasets/le_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /result --checkpoints_dir /Checkpoints --which_epoch latest
 ```
 ## Basic Usage: Generate recombind images from mammography images:
 ```
-python test.py --dataroot Datasets/mammography_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /IXI/result --checkpoints_dir /IXI/Checkpoints --which_epoch latest
+python test.py --dataroot Datasets/mammography_re/ --name le_re --gpu_ids 0 --model resvit_one --which_model_netG resvit --dataset_mode aligned --norm batch --phase test --output_nc 1 --input_nc 3 --how_many 10000 --serial_batches --fineSize 256 --loadSize 256  --results_dir /result --checkpoints_dir /Checkpoints --which_epoch latest
 ```
 # RISS Inference Demo
 
@@ -156,7 +156,6 @@ python SSIM.py
 ### Train RISS for low-energy-to-recombined image synthesis: 
 **Useful options**
 
-- Use `--gpu_ids 0` to train on multiple GPUs.
 - Use `--batchSize` according to your available GPU memory.
 - Use `--fineSize` and `--loadSize` to change the training image resolution.
 - Use `--checkpoints_dir` to specify a different directory for saving model checkpoints.
